@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Economics Explained Through a Taco Stand</title>
+    <title>Taconomics · Economics Through a Taco Stand</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -17,6 +17,9 @@
             --color-dark-blue: #003366;
             --color-text: #333333;
             --color-white: #ffffff;
+            --color-taco-red: #e53935;
+            --color-taco-blue: #1e88e5;
+            --color-equilibrium: #4caf50;
         }
         
         * {
@@ -36,6 +39,35 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        /* ── Coming‑soon banner ── */
+        .coming-banner {
+            background: linear-gradient(135deg, #b87333, #d4a373);
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            border-bottom: 3px solid var(--color-dark-blue);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .coming-banner i {
+            font-size: 1.8rem;
+            color: #fff6e6;
+        }
+        .coming-banner span {
+            background: rgba(0,0,0,0.15);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.2rem;
         }
         
         /* Header Styles */
@@ -162,7 +194,7 @@
             background-color: var(--color-dark);
         }
         
-        /* Interactive Section */
+        /* Interactive Section (new Taconomics style) */
         .interactive-section {
             padding: 60px 0;
             background-color: var(--color-white);
@@ -181,16 +213,18 @@
         }
         
         .controls-panel {
-            flex: 1;
+            flex: 1.2;
             min-width: 300px;
             background-color: var(--color-light);
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-height: 85vh;
+            overflow-y: auto;
         }
         
         .graph-container {
-            flex: 1;
+            flex: 1.5;
             min-width: 300px;
             background-color: white;
             padding: 25px;
@@ -312,11 +346,11 @@
         }
         
         .demand-label:before {
-            background-color: var(--color-dark-blue);
+            background-color: var(--color-taco-red);
         }
         
         .supply-label:before {
-            background-color: var(--color-copper);
+            background-color: var(--color-taco-blue);
         }
         
         .feedback-box {
@@ -337,7 +371,7 @@
             border: 1px dashed var(--color-dark-med);
         }
         
-        /* Shock Events */
+        /* Shock Events (re‑styled as button groups) */
         .shock-events {
             background-color: var(--color-light);
             padding: 40px 0;
@@ -364,6 +398,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 1rem;
         }
         
         .shock-btn:hover {
@@ -380,6 +415,8 @@
             margin-left: auto;
             margin-right: auto;
             display: none;
+            text-align: left;
+            border-left: 5px solid var(--color-copper);
         }
         
         /* Game Section */
@@ -439,6 +476,24 @@
             margin: 0 auto;
         }
         
+        /* small reset button for graph */
+        .reset-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 8px;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .reset-btn:hover {
+            background-color: #d32f2f;
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -462,19 +517,29 @@
             .principles-grid {
                 grid-template-columns: 1fr;
             }
+            .coming-banner {
+                font-size: 1rem;
+                padding: 12px 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 📢 BANNER: book coming 2027 -->
+    <div class="coming-banner">
+        <i class="fas fa-book-open"></i>
+        <span>📘 TACONOMICS — BOOK COMING 2027</span>
+        <i class="fas fa-taco"></i>
+    </div>
+
     <!-- Header with Book Cover -->
     <header>
         <div class="container header-content">
             <div class="book-cover">
-                <!-- Book cover image - using your provided filename -->
-                <img src="taconomicscover.jpg" alt="Economics Explained Through a Taco Stand" onerror="this.onerror=null; this.src='https://placehold.co/250x350/003366/b87333?text=Book+Cover&font=montserrat'">
+                <img src="taconomicscover.jpg" alt="Taconomics: Economics Through a Taco Stand" onerror="this.onerror=null; this.src='https://placehold.co/250x350/003366/b87333?text=Taconomics&font=montserrat'">
             </div>
             <div class="header-text">
-                <h1>Economics Explained Through a Taco Stand</h1>
+                <h1>Taconomics: Economics Through a Taco Stand</h1>
                 <p class="tagline">Learn Microeconomics One Taco at a Time</p>
                 <p style="font-size: 1.2rem;">A deliciously simple introduction to economics where every concept is explained through the familiar lens of running a taco business. Perfect for students, curious minds, and anyone who's ever wondered how the economy really works.</p>
             </div>
@@ -486,7 +551,7 @@
         <div class="container">
             <h2>About the Book</h2>
             <div class="summary-content">
-                <p>"Economics Explained Through a Taco Stand" transforms complex economic principles into digestible, real-world scenarios that everyone can understand. Instead of dry textbooks and confusing graphs, you'll explore fundamental concepts through the everyday challenges of running a taco business.</p>
+                <p>"Taconomics" transforms complex economic principles into digestible, real-world scenarios that everyone can understand. Instead of dry textbooks and confusing graphs, you'll explore fundamental concepts through the everyday challenges of running a taco business.</p>
                 <p>This engaging guide covers essential microeconomics topics including supply and demand, market equilibrium, production costs, pricing strategies, and competitive markets—all through the lens of taco production and sales. Whether you're a student struggling with economic theory, a small business owner, or simply a curious mind, this book makes economics accessible, practical, and even fun.</p>
                 <p>Author Sergio Nieto breaks down intimidating economic jargon into plain language, using the taco stand as a consistent, relatable framework. By the end of this book, you'll not only understand key economic concepts but also see how they play out in everyday life and business decisions.</p>
             </div>
@@ -519,110 +584,79 @@
         </div>
     </section>
 
-    <!-- Interactive Supply & Demand Section -->
+    <!-- ========== INTERACTIVE TACO ECONOMICS (adapted from the better code) ========== -->
     <section class="interactive-section">
         <div class="container">
             <div class="section-header">
                 <h2>Interactive Taco Economics</h2>
-                <p>Adjust the sliders to see how supply and demand affect price and quantity in a taco market</p>
+                <p>Click on the buttons to shift supply, demand, or simulate price changes — all with a taco‑stand twist 🌮</p>
             </div>
             
             <div class="interactive-container">
+                <!-- LEFT: control panel with scenario buttons -->
                 <div class="controls-panel">
-                    <h3>Market Controls</h3>
+                    <h3 style="color: #003366; margin-bottom: 20px;">Market Scenarios</h3>
                     
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>Price per Taco</span>
-                            <span id="price-value">$4.00</span>
-                        </div>
-                        <p class="slider-description">Adjust the price you charge for each taco</p>
-                        <input type="range" min="1" max="7" value="4" step="0.5" class="slider" id="price-slider">
+                    <!-- Supply Shifters (taco style) -->
+                    <div class="btn-group" style="margin-bottom: 20px; border-bottom: 1px solid #b5c89e; padding-bottom: 15px;">
+                        <p style="font-weight: bold; color: #365a0a; margin-bottom: 8px;">📦 Supply Shifters (5 determinants):</p>
+                        <button onclick="applyScenario('tech')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">1. Tech: New taco press (Shift Right)</button>
+                        <button onclick="applyScenario('inputCost')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">2. Inputs: Avocado price jumps (Shift Left)</button>
+                        <button onclick="applyScenario('subsidy')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">3. Government: Taco subsidy (Shift Right)</button>
+                        <button onclick="applyScenario('futurePriceSupply')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">4. Expectations: Future price rise (Shift Left)</button>
+                        <button onclick="applyScenario('numSellers')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">5. Number of Sellers: New taco trucks (Shift Right)</button>
                     </div>
-                    
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>Demand Shift (More/Fewer Customers)</span>
-                            <span id="demand-value">Neutral</span>
-                        </div>
-                        <p class="slider-description">Move right: More customers. Move left: Fewer customers.</p>
-                        <input type="range" min="-3" max="3" value="0" class="slider" id="demand-slider">
-                        <div class="slider-ticks" style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.8rem;">
-                            <span>Fewer</span>
-                            <span>Neutral</span>
-                            <span>More</span>
-                        </div>
+
+                    <!-- Demand Shifters (taco style) -->
+                    <div class="btn-group" style="margin-bottom: 20px; border-bottom: 1px solid #b5c89e; padding-bottom: 15px;">
+                        <p style="font-weight: bold; color: #365a0a; margin-bottom: 8px;">🛒 Demand Shifters (5 determinants):</p>
+                        <button onclick="applyScenario('taste')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">1. Tastes: Tacos become trendy (Shift Right)</button>
+                        <button onclick="applyScenario('income')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">2. Income: Buyers earn more (Shift Right)</button>
+                        <button onclick="applyScenario('substitute')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">3. Related Goods: Burrito price rises (Shift Right)</button>
+                        <button onclick="applyScenario('futurePriceDemand')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">4. Expectations: Taco Tuesday discount ahead (Shift Left)</button>
+                        <button onclick="applyScenario('numBuyers')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">5. Number of Buyers: Office opens next door (Shift Right)</button>
                     </div>
-                    
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>Supply Shift (Workers/Ingredients)</span>
-                            <span id="supply-value">Neutral</span>
-                        </div>
-                        <p class="slider-description">Move right: More capacity. Move left: Shortage.</p>
-                        <input type="range" min="-3" max="3" value="0" class="slider" id="supply-slider">
-                        <div class="slider-ticks" style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.8rem;">
-                            <span>Shortage</span>
-                            <span>Neutral</span>
-                            <span>More Capacity</span>
-                        </div>
+
+                    <!-- Price Movements -->
+                    <div class="btn-group" style="margin-bottom: 15px;">
+                        <p style="font-weight: bold; color: #365a0a; margin-bottom: 8px;">💲 Movements Along Curves (Price Changes):</p>
+                        <button onclick="applyScenario('priceIncrease')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">⬆️ Price increases to $40 (Surplus)</button>
+                        <button onclick="applyScenario('priceDecrease')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">⬇️ Price decreases to $20 (Shortage)</button>
                     </div>
-                    
-                    <div class="equilibrium-explanation">
-                        <p><strong>Key Concept:</strong> The <em>equilibrium price</em> is where the supply and demand curves intersect. At this price, the quantity of tacos customers want to buy equals the quantity you're willing to sell.</p>
-                    </div>
-                    
-                    <div class="economics-principles">
-                        <h4>Economic Principles</h4>
-                        <div class="principles-grid">
-                            <div class="demand-principles">
-                                <h5>Demand Shifts Right (Increase)</h5>
-                                <ul>
-                                    <li>More customers</li>
-                                    <li>Higher income</li>
-                                    <li>Price of substitutes rises</li>
-                                    <li>Tastes & preferences increase</li>
-                                </ul>
-                            </div>
-                            <div class="supply-principles">
-                                <h5>Supply Shifts Right (Increase)</h5>
-                                <ul>
-                                    <li>More workers</li>
-                                    <li>Better technology</li>
-                                    <li>Lower ingredient costs</li>
-                                    <li>Good weather conditions</li>
-                                </ul>
-                            </div>
-                        </div>
+
+                    <button class="reset-btn" onclick="resetGraph()">🔄 Reset chart to initial taco equilibrium</button>
+
+                    <div class="explanation" id="scenario-explanation" style="margin-top: 20px; padding: 15px; background: #e8f0fe; border-left: 4px solid #1a73e8; border-radius: 4px; font-size: 0.95rem;">
+                        <strong>🌮 Current scenario:</strong> Initial taco equilibrium at Price = $30, Quantity = 30. Click a button to see the market shift!
                     </div>
                 </div>
-                
+
+                <!-- RIGHT: Chart -->
                 <div class="graph-container">
-                    <h3>Supply & Demand Graph</h3>
+                    <h3 style="color: #003366; margin-bottom: 10px;">Supply & Demand (Tacos)</h3>
                     <div class="graph-wrapper">
                         <div class="chart-container">
-                            <canvas id="economics-chart"></canvas>
+                            <canvas id="marketChart"></canvas>
                         </div>
                         <div class="graph-labels">
-                            <div class="demand-label">Demand</div>
-                            <div class="supply-label">Supply</div>
+                            <div class="demand-label">Demand (Taco lovers)</div>
+                            <div class="supply-label">Supply (Taco makers)</div>
                         </div>
                     </div>
-                    
-                    <div class="feedback-box" id="feedback">
-                        <!-- Feedback will be inserted here by JavaScript -->
+                    <div class="feedback-box" id="graph-feedback" style="margin-top: 15px;">
+                        <p>💬 Adjust scenarios to see how the taco market reacts.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Shock Events Section -->
+    <!-- Shock Events Section (taco version, using the same event buttons but styled as taco shocks) -->
     <section class="shock-events">
         <div class="container">
             <div class="section-header">
-                <h2>Market Shock Events</h2>
-                <p>Click on events to see how real-world situations affect the taco market</p>
+                <h2>Taco Market Shock Events</h2>
+                <p>Click on events to see how real‑world situations affect the taco market</p>
             </div>
             
             <div class="shock-buttons">
@@ -633,7 +667,7 @@
             </div>
             
             <div class="shock-explanation" id="shock-explanation">
-                <!-- Explanation will be inserted here by JavaScript -->
+                <!-- filled by JS -->
             </div>
         </div>
     </section>
@@ -674,400 +708,249 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <h3>Economics Explained Through a Taco Stand</h3>
-            <p>© 2023 Sergio Nieto. All rights reserved.</p>
-            <p>This website accompanies the book "Economics Explained Through a Taco Stand"</p>
+            <h3>Taconomics: Economics Through a Taco Stand</h3>
+            <p>© 2027 Sergio Nieto. All rights reserved.</p>
+            <p>This website accompanies the book "Taconomics: Economics Through a Taco Stand" — coming 2027.</p>
             <p style="margin-top: 20px; font-size: 0.9rem; color: var(--color-light-med);">For educational purposes only. Taco illustrations and concepts are proprietary.</p>
         </div>
     </footer>
 
     <script>
-        // DOM Elements
-        const priceSlider = document.getElementById('price-slider');
-        const demandSlider = document.getElementById('demand-slider');
-        const supplySlider = document.getElementById('supply-slider');
-        const priceValue = document.getElementById('price-value');
-        const demandValue = document.getElementById('demand-value');
-        const supplyValue = document.getElementById('supply-value');
-        const feedback = document.getElementById('feedback');
+        // ==================== CHART SETUP (taco version) ====================
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [
+                    {
+                        label: 'Demand (Taco lovers)',
+                        data: [{x: 50, y: 10}, {x: 40, y: 20}, {x: 30, y: 30}, {x: 20, y: 40}, {x: 10, y: 50}],
+                        borderColor: '#e53935',
+                        backgroundColor: 'rgba(229, 57, 53, 0.1)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Supply (Taco makers)',
+                        data: [{x: 10, y: 10}, {x: 20, y: 20}, {x: 30, y: 30}, {x: 40, y: 40}, {x: 50, y: 50}],
+                        borderColor: '#1e88e5',
+                        backgroundColor: 'rgba(30, 136, 229, 0.1)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Equilibrium / Market point',
+                        data: [{x: 30, y: 30}],
+                        borderColor: '#4caf50',
+                        backgroundColor: '#4caf50',
+                        pointRadius: 8,
+                        pointHoverRadius: 10,
+                        showLine: false,
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title: { display: true, text: 'Quantity (Tacos per day)', font: { size: 14, weight: 'bold' } },
+                        min: 0,
+                        max: 70,
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Price ($ per taco)', font: { size: 14, weight: 'bold' } },
+                        min: 0,
+                        max: 60,
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    }
+                }
+            }
+        });
+
+        // ---- helper functions (identical logic as in the 'better code' but adapted) ----
+        function applyScenario(scenario) {
+            const exp = document.getElementById('scenario-explanation');
+            const feedbackEl = document.getElementById('graph-feedback');
+
+            // supply scenarios
+            if (scenario === 'tech') {
+                shiftSupply(15);
+                setEquilibrium(37.5, 22.5);
+                exp.innerHTML = "<strong>Supply Shift Right (Technology):</strong> A new taco press speeds up production. Supply shifts right. <em>Result: Lower price, higher quantity.</em>";
+                feedbackEl.innerHTML = "<p>🌮 Taco tech makes production faster — more tacos at lower cost, price drops!</p>";
+            }
+            else if (scenario === 'inputCost') {
+                shiftSupply(-10);
+                setEquilibrium(25, 35);
+                exp.innerHTML = "<strong>Supply Shift Left (Resource Costs):</strong> Avocado prices skyrocket. Supply shifts left. <em>Result: Higher price, lower quantity.</em>";
+                feedbackEl.innerHTML = "<p>🥑 Avocado shortage raises costs — fewer tacos, higher price.</p>";
+            }
+            else if (scenario === 'subsidy') {
+                shiftSupply(10);
+                setEquilibrium(35, 25);
+                exp.innerHTML = "<strong>Supply Shift Right (Government Subsidy):</strong> A taco subsidy lowers production costs. Supply shifts right. <em>Result: Lower price, higher quantity.</em>";
+                feedbackEl.innerHTML = "<p>🏛️ Taco subsidy! More tacos, cheaper for everyone.</p>";
+            }
+            else if (scenario === 'futurePriceSupply') {
+                shiftSupply(-10);
+                setEquilibrium(25, 35);
+                exp.innerHTML = "<strong>Supply Shift Left (Expectations):</strong> Sellers expect higher prices tomorrow, so they hold back stock today. Supply shifts left. <em>Result: Higher price, lower quantity.</em>";
+                feedbackEl.innerHTML = "<p>📅 Expecting higher prices later? Today's supply shrinks.</p>";
+            }
+            else if (scenario === 'numSellers') {
+                shiftSupply(15);
+                setEquilibrium(37.5, 22.5);
+                exp.innerHTML = "<strong>Supply Shift Right (Number of Sellers):</strong> New taco trucks enter the market. Supply shifts right. <em>Result: Lower price, higher quantity.</em>";
+                feedbackEl.innerHTML = "<p>🚚 More taco vendors = more tacos, lower prices.</p>";
+            }
+
+            // demand scenarios
+            else if (scenario === 'taste') {
+                shiftDemand(15);
+                setEquilibrium(37.5, 37.5);
+                exp.innerHTML = "<strong>Demand Shift Right (Tastes & Preferences):</strong> Tacos become the latest food trend. Demand shifts right. <em>Result: Higher price, higher quantity.</em>";
+                feedbackEl.innerHTML = "<p>🌮 Taco trend! Everyone wants tacos, price and quantity rise.</p>";
+            }
+            else if (scenario === 'income') {
+                shiftDemand(10);
+                setEquilibrium(35, 35);
+                exp.innerHTML = "<strong>Demand Shift Right (Income):</strong> Buyers have more income to spend. Demand shifts right. <em>Result: Higher price, higher quantity.</em>";
+                feedbackEl.innerHTML = "<p>💰 More income → more taco demand, higher prices.</p>";
+            }
+            else if (scenario === 'substitute') {
+                shiftDemand(15);
+                setEquilibrium(37.5, 37.5);
+                exp.innerHTML = "<strong>Demand Shift Right (Related Goods):</strong> Burrito prices rise, so people switch to tacos. Demand shifts right. <em>Result: Higher price, higher quantity.</em>";
+                feedbackEl.innerHTML = "<p>🌯 Burritos got expensive — tacos are the substitute!</p>";
+            }
+            else if (scenario === 'futurePriceDemand') {
+                shiftDemand(-15);
+                setEquilibrium(22.5, 22.5);
+                exp.innerHTML = "<strong>Demand Shift Left (Expectations):</strong> Consumers expect a Taco Tuesday discount tomorrow, so they buy less today. Demand shifts left. <em>Result: Lower price, lower quantity.</em>";
+                feedbackEl.innerHTML = "<p>📉 Waiting for taco Tuesday? Today's demand drops.</p>";
+            }
+            else if (scenario === 'numBuyers') {
+                shiftDemand(10);
+                setEquilibrium(35, 35);
+                exp.innerHTML = "<strong>Demand Shift Right (Number of Buyers):</strong> A new office opens nearby, adding taco lovers. Demand shifts right. <em>Result: Higher price, higher quantity.</em>";
+                feedbackEl.innerHTML = "<p>🏢 More taco buyers from the new office — demand jumps.</p>";
+            }
+
+            // price movements
+            else if (scenario === 'priceIncrease') {
+                resetCurvesOnly();
+                chart.data.datasets[2].data = [
+                    {x: 20, y: 40},
+                    {x: 40, y: 40}
+                ];
+                exp.innerHTML = "<strong>Movement Along Both Curves (Price Increase to $40):</strong> A price change does NOT shift the curves. Demand quantity contracts, supply quantity expands. <strong>SURPLUS</strong> of 20 tacos (Qs > Qd).";
+                feedbackEl.innerHTML = "<p>⬆️ Price at $40: too many tacos, not enough buyers → surplus.</p>";
+            }
+            else if (scenario === 'priceDecrease') {
+                resetCurvesOnly();
+                chart.data.datasets[2].data = [
+                    {x: 40, y: 20},
+                    {x: 20, y: 20}
+                ];
+                exp.innerHTML = "<strong>Movement Along Both Curves (Price Decrease to $20):</strong> Price change does NOT shift curves. Demand quantity expands, supply quantity contracts. <strong>SHORTAGE</strong> of 20 tacos (Qd > Qs).";
+                feedbackEl.innerHTML = "<p>⬇️ Price at $20: tacos fly off the shelf, shortage!</p>";
+            }
+
+            chart.update();
+        }
+
+        function shiftSupply(amount) {
+            resetCurvesOnly();
+            chart.data.datasets[1].data = [
+                {x: 10 + amount, y: 10},
+                {x: 20 + amount, y: 20},
+                {x: 30 + amount, y: 30},
+                {x: 40 + amount, y: 40},
+                {x: 50 + amount, y: 50}
+            ];
+        }
+
+        function shiftDemand(amount) {
+            resetCurvesOnly();
+            chart.data.datasets[0].data = [
+                {x: 50 + amount, y: 10},
+                {x: 40 + amount, y: 20},
+                {x: 30 + amount, y: 30},
+                {x: 20 + amount, y: 40},
+                {x: 10 + amount, y: 50}
+            ];
+        }
+
+        function setEquilibrium(q, p) {
+            chart.data.datasets[2].data = [{x: q, y: p}];
+        }
+
+        function resetCurvesOnly() {
+            chart.data.datasets[0].data = [{x: 50, y: 10}, {x: 40, y: 20}, {x: 30, y: 30}, {x: 20, y: 40}, {x: 10, y: 50}];
+            chart.data.datasets[1].data = [{x: 10, y: 10}, {x: 20, y: 20}, {x: 30, y: 30}, {x: 40, y: 40}, {x: 50, y: 50}];
+        }
+
+        function resetGraph() {
+            resetCurvesOnly();
+            setEquilibrium(30, 30);
+            document.getElementById('scenario-explanation').innerHTML = "<strong>🌮 Current scenario:</strong> Initial taco equilibrium at Price = $30, Quantity = 30. Click a button to see the market shift!";
+            document.getElementById('graph-feedback').innerHTML = "<p>💬 Adjust scenarios to see how the taco market reacts.</p>";
+            chart.update();
+        }
+
+        // ==================== SHOCK EVENTS (taco version) ====================
         const shockButtons = document.querySelectorAll('.shock-btn');
         const shockExplanation = document.getElementById('shock-explanation');
-        const gameOptions = document.querySelectorAll('.game-option');
-        const gameReveal = document.getElementById('game-reveal');
-        
-        // Chart.js variables
-        let economicsChart;
-        let equilibriumPrice = 4.0;
-        let currentPrice = 4.0;
-        let isAtEquilibrium = true;
-        
-        // Initialize the chart
-        function initializeChart() {
-            const ctx = document.getElementById('economics-chart').getContext('2d');
-            
-            // Destroy existing chart if it exists
-            if (economicsChart) {
-                economicsChart.destroy();
-            }
-            
-            economicsChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    datasets: [
-                        {
-                            label: 'Demand',
-                            data: [],
-                            borderColor: '#003366',
-                            backgroundColor: 'transparent',
-                            borderWidth: 3,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0,
-                            borderDash: []
-                        },
-                        {
-                            label: 'Supply',
-                            data: [],
-                            borderColor: '#b87333',
-                            backgroundColor: 'transparent',
-                            borderWidth: 3,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0,
-                            borderDash: []
-                        },
-                        {
-                            label: 'Equilibrium',
-                            data: [],
-                            backgroundColor: '#365a0a',
-                            borderColor: '#365a0a',
-                            pointRadius: 8,
-                            pointHoverRadius: 10,
-                            pointBorderWidth: 2,
-                            pointBorderColor: '#ffffff',
-                            showLine: false
-                        },
-                        {
-                            label: 'Current Price',
-                            data: [],
-                            backgroundColor: '#ff4444',
-                            borderColor: '#ff4444',
-                            pointRadius: 6,
-                            pointHoverRadius: 8,
-                            pointBorderWidth: 2,
-                            pointBorderColor: '#ffffff',
-                            pointStyle: 'rectRot',
-                            showLine: false
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false
-                        }
-                    },
-                    scales: {
-                        x: {
-                            type: 'linear',
-                            position: 'bottom',
-                            title: {
-                                display: true,
-                                text: 'Quantity (Tacos per day)',
-                                color: '#333333',
-                                font: {
-                                    size: 14,
-                                    weight: 'bold'
-                                }
-                            },
-                            min: 0,
-                            max: 100,
-                            grid: {
-                                color: 'rgba(0,0,0,0.1)'
-                            },
-                            ticks: {
-                                stepSize: 10,
-                                callback: function(value) {
-                                    return value;
-                                }
-                            }
-                        },
-                        y: {
-                            type: 'linear',
-                            title: {
-                                display: true,
-                                text: 'Price ($ per taco)',
-                                color: '#333333',
-                                font: {
-                                    size: 14,
-                                    weight: 'bold'
-                                }
-                            },
-                            min: 0,
-                            max: 8,
-                            grid: {
-                                color: 'rgba(0,0,0,0.1)'
-                            },
-                            ticks: {
-                                stepSize: 1,
-                                callback: function(value) {
-                                    return '$' + value.toFixed(1);
-                                }
-                            }
-                        }
-                    },
-                    interaction: {
-                        intersect: false,
-                        mode: 'index'
-                    }
-                }
-            });
-            
-            // Initial update
-            updateChart();
-        }
-        
-        // Calculate demand curve points
-        function calculateDemandCurve(shift) {
-            const points = [];
-            // Base demand function: Q = 100 - 12.5*P
-            // Shift moves the curve left/right: Q = 100 - 12.5*P + (shift * 15)
-            
-            for (let price = 0; price <= 8; price += 0.2) {
-                let quantity = 100 - 12.5 * price + (shift * 15);
-                
-                // Only include points within graph bounds
-                if (quantity >= 0 && quantity <= 100 && price >= 0 && price <= 8) {
-                    points.push({x: quantity, y: price});
-                }
-            }
-            
-            return points;
-        }
-        
-        // Calculate supply curve points
-        function calculateSupplyCurve(shift) {
-            const points = [];
-            // Base supply function: Q = 12.5*P - 50
-            // Shift moves the curve left/right: Q = 12.5*P - 50 + (shift * 15)
-            
-            for (let price = 0; price <= 8; price += 0.2) {
-                let quantity = 12.5 * price - 50 + (shift * 15);
-                
-                // Only include points within graph bounds
-                if (quantity >= 0 && quantity <= 100 && price >= 0 && price <= 8) {
-                    points.push({x: quantity, y: price});
-                }
-            }
-            
-            return points;
-        }
-        
-        // Find intersection of demand and supply curves
-        function findEquilibrium(demandPoints, supplyPoints) {
-            // Find closest points between demand and supply curves
-            let minDistance = Infinity;
-            let equilibriumPoint = {x: 50, y: 4.0};
-            
-            for (let i = 0; i < demandPoints.length; i++) {
-                const demandPoint = demandPoints[i];
-                
-                for (let j = 0; j < supplyPoints.length; j++) {
-                    const supplyPoint = supplyPoints[j];
-                    
-                    // Calculate distance between points
-                    const dx = demandPoint.x - supplyPoint.x;
-                    const dy = demandPoint.y - supplyPoint.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    // Find points that are close in both price and quantity
-                    if (distance < minDistance && Math.abs(demandPoint.y - supplyPoint.y) < 0.5) {
-                        minDistance = distance;
-                        // Use average of the two points for equilibrium
-                        equilibriumPoint = {
-                            x: (demandPoint.x + supplyPoint.x) / 2,
-                            y: (demandPoint.y + supplyPoint.y) / 2
-                        };
-                    }
-                }
-            }
-            
-            return equilibriumPoint;
-        }
-        
-        // Update the chart
-        function updateChart() {
-            const demandShift = parseInt(demandSlider.value);
-            const supplyShift = parseInt(supplySlider.value);
-            currentPrice = parseFloat(priceSlider.value);
-            
-            // Calculate curves based on shifts
-            const demandPoints = calculateDemandCurve(demandShift);
-            const supplyPoints = calculateSupplyCurve(supplyShift);
-            
-            // Find equilibrium point
-            const equilibrium = findEquilibrium(demandPoints, supplyPoints);
-            equilibriumPrice = equilibrium.y;
-            
-            // Check if current price equals equilibrium
-            isAtEquilibrium = Math.abs(currentPrice - equilibriumPrice) < 0.1;
-            
-            // Update chart data
-            economicsChart.data.datasets[0].data = demandPoints;
-            economicsChart.data.datasets[1].data = supplyPoints;
-            economicsChart.data.datasets[2].data = [equilibrium];
-            
-            // Current price marker (show at equilibrium quantity for clarity)
-            const currentPricePoint = { x: equilibrium.x, y: currentPrice };
-            economicsChart.data.datasets[3].data = [currentPricePoint];
-            
-            // Update chart
-            economicsChart.update('none');
-            
-            // Update feedback
-            updateFeedback();
-        }
-        
-        // Update sliders and display
-        function updateSliders() {
-            // Update displayed values
-            currentPrice = parseFloat(priceSlider.value);
-            priceValue.textContent = '$' + currentPrice.toFixed(2);
-            
-            // Update demand slider label
-            const demandVal = parseInt(demandSlider.value);
-            if (demandVal < 0) {
-                demandValue.textContent = Math.abs(demandVal) + ' level' + (Math.abs(demandVal) > 1 ? 's' : '') + ' fewer customers';
-            } else if (demandVal > 0) {
-                demandValue.textContent = demandVal + ' level' + (demandVal > 1 ? 's' : '') + ' more customers';
-            } else {
-                demandValue.textContent = 'Neutral';
-            }
-            
-            // Update supply slider label
-            const supplyVal = parseInt(supplySlider.value);
-            if (supplyVal < 0) {
-                supplyValue.textContent = Math.abs(supplyVal) + ' level' + (Math.abs(supplyVal) > 1 ? 's' : '') + ' shortage';
-            } else if (supplyVal > 0) {
-                supplyValue.textContent = supplyVal + ' level' + (supplyVal > 1 ? 's' : '') + ' more capacity';
-            } else {
-                supplyValue.textContent = 'Neutral';
-            }
-            
-            // Update chart
-            updateChart();
-        }
-        
-        // Update feedback text
-        function updateFeedback() {
-            const demandShift = parseInt(demandSlider.value);
-            const supplyShift = parseInt(supplySlider.value);
-            
-            let feedbackText = "";
-            
-            if (isAtEquilibrium) {
-                feedbackText = `The taco market is in equilibrium. At $${equilibriumPrice.toFixed(2)} per taco, the quantity supplied matches the quantity demanded. This is the equilibrium price where the supply and demand curves intersect.`;
-                
-                if (demandShift !== 0 || supplyShift !== 0) {
-                    feedbackText += ` The equilibrium has shifted due to market changes.`;
-                    
-                    if (demandShift > 0 && supplyShift === 0) {
-                        feedbackText += ` Increased demand has raised the equilibrium price from $4.00 to $${equilibriumPrice.toFixed(2)}.`;
-                    } else if (demandShift < 0 && supplyShift === 0) {
-                        feedbackText += ` Decreased demand has lowered the equilibrium price from $4.00 to $${equilibriumPrice.toFixed(2)}.`;
-                    } else if (supplyShift > 0 && demandShift === 0) {
-                        feedbackText += ` Increased supply has lowered the equilibrium price from $4.00 to $${equilibriumPrice.toFixed(2)}.`;
-                    } else if (supplyShift < 0 && demandShift === 0) {
-                        feedbackText += ` Decreased supply has raised the equilibrium price from $4.00 to $${equilibriumPrice.toFixed(2)}.`;
-                    } else if (demandShift > 0 && supplyShift > 0) {
-                        feedbackText += ` Both demand and supply have increased. Quantity definitely increases, but the price effect depends on which increased more.`;
-                    } else if (demandShift > 0 && supplyShift < 0) {
-                        feedbackText += ` Demand increased but supply decreased. Price definitely increases, but the quantity effect is indeterminate.`;
-                    }
-                }
-            } else {
-                if (currentPrice > equilibriumPrice) {
-                    feedbackText = `At $${currentPrice.toFixed(2)} (above the equilibrium price of $${equilibriumPrice.toFixed(2)}), quantity supplied exceeds quantity demanded. This creates a surplus - you have unsold tacos.`;
-                } else {
-                    feedbackText = `At $${currentPrice.toFixed(2)} (below the equilibrium price of $${equilibriumPrice.toFixed(2)}), quantity demanded exceeds quantity supplied. This creates a shortage - you sell out quickly.`;
-                }
-                
-                // Add shift information
-                if (demandShift > 0) {
-                    feedbackText += ` Demand has increased (more customers).`;
-                } else if (demandShift < 0) {
-                    feedbackText += ` Demand has decreased (fewer customers).`;
-                }
-                
-                if (supplyShift > 0) {
-                    feedbackText += ` Supply has increased (more capacity).`;
-                } else if (supplyShift < 0) {
-                    feedbackText += ` Supply has decreased (shortage).`;
-                }
-            }
-            
-            feedback.innerHTML = `<p>"${feedbackText}"</p>`;
-        }
-        
-        // Shock event handlers
+
         shockButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const event = this.getAttribute('data-event');
-                let demandChange = 0;
-                let supplyChange = 0;
                 let explanation = "";
-                
+
                 switch(event) {
                     case 'avocado':
-                        supplyChange = -2;
-                        explanation = `<strong>Avocado Shortage:</strong> This increases your production costs and reduces how many tacos you can make. Supply decreases (shifts left), raising the equilibrium price. Customers pay more, and fewer tacos are sold overall. This demonstrates how input costs affect supply.`;
+                        explanation = `<strong>🥑 Avocado Shortage:</strong> This increases your production costs and reduces how many tacos you can make. Supply decreases (shifts left), raising the equilibrium price. Customers pay more, and fewer tacos are sold overall. This demonstrates how input costs affect supply.`;
                         break;
                     case 'worker':
-                        supplyChange = 2;
-                        explanation = `<strong>Hire Another Worker:</strong> With more labor, you can produce more tacos at every price. Supply increases (shifts right), lowering the equilibrium price. Customers pay less, and more tacos are sold. This shows how production capacity affects supply.`;
+                        explanation = `<strong>👨‍🍳 Hire Another Worker:</strong> With more labor, you can produce more tacos at every price. Supply increases (shifts right), lowering the equilibrium price. Customers pay less, and more tacos are sold. This shows how production capacity affects supply.`;
                         break;
                     case 'football':
-                        demandChange = 3;
-                        explanation = `<strong>Football Game Nearby:</strong> More hungry fans want tacos. Demand increases (shifts right), raising the equilibrium price. At the original price, tacos would sell out quickly. The price rises until supply and demand are balanced again.`;
+                        explanation = `<strong>🏈 Football Game Nearby:</strong> More hungry fans want tacos. Demand increases (shifts right), raising the equilibrium price. At the original price, tacos would sell out quickly. The price rises until supply and demand are balanced again.`;
                         break;
                     case 'rain':
-                        demandChange = -2;
-                        explanation = `<strong>Rainy Day:</strong> Fewer people go out for tacos. Demand decreases (shifts left), lowering the equilibrium price. At the original price, you'd have unsold tacos. The price falls until the market clears.`;
+                        explanation = `<strong>🌧️ Rainy Day:</strong> Fewer people go out for tacos. Demand decreases (shifts left), lowering the equilibrium price. At the original price, you'd have unsold tacos. The price falls until the market clears.`;
                         break;
                 }
                 
-                // Update sliders
-                demandSlider.value = parseInt(demandSlider.value) + demandChange;
-                supplySlider.value = parseInt(supplySlider.value) + supplyChange;
-                
-                // Clamp values
-                demandSlider.value = Math.max(-3, Math.min(3, demandSlider.value));
-                supplySlider.value = Math.max(-3, Math.min(3, supplySlider.value));
-                
-                // Update display
-                updateSliders();
-                
-                // Show explanation
                 shockExplanation.innerHTML = `<h4>${button.innerHTML}</h4><p>${explanation}</p>`;
                 shockExplanation.style.display = 'block';
                 shockExplanation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
         });
-        
-        // Game option handlers
+
+        // ==================== GAME SECTION ====================
+        const gameOptions = document.querySelectorAll('.game-option');
+        const gameReveal = document.getElementById('game-reveal');
+
         gameOptions.forEach(option => {
             option.addEventListener('click', function() {
                 const answer = this.getAttribute('data-answer');
                 let revealText = "";
                 let isCorrect = false;
-                
-                // Check answer
+
                 if (answer === "fewer") {
                     revealText = "Correct! When you raise prices, some customers will buy fewer tacos or stop buying altogether. This is the law of demand: as price increases, quantity demanded decreases. This is shown as a movement along the demand curve (not a shift of the curve).";
                     isCorrect = true;
@@ -1075,29 +958,20 @@
                     revealText = "Not quite. While it's possible that perceived quality might increase or loyal customers might not mind, the basic economic principle is that when prices rise, quantity demanded typically falls. This is known as the law of demand and is shown as a movement along the demand curve.";
                     isCorrect = false;
                 }
-                
-                // Display result
+
                 gameReveal.innerHTML = `
                     <h3>${isCorrect ? "✅ Correct!" : "❌ Try Again"}</h3>
                     <p>${revealText}</p>
                     <p><strong>Economic Principle:</strong> This demonstrates the law of demand and the difference between a movement along the curve (price change) vs. a shift of the curve (other factors changing).</p>
                 `;
                 gameReveal.style.display = 'block';
-                
-                // Scroll to reveal
                 gameReveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
         });
-        
-        // Initialize everything when page loads
+
+        // initialise the explanation text on load (the graph already shows default)
         window.addEventListener('DOMContentLoaded', function() {
-            initializeChart();
-            updateSliders();
-            
-            // Add event listeners to sliders
-            priceSlider.addEventListener('input', updateSliders);
-            demandSlider.addEventListener('input', updateSliders);
-            supplySlider.addEventListener('input', updateSliders);
+            // nothing else needed, chart is already created
         });
     </script>
 </body>
