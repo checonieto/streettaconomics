@@ -1,3 +1,5 @@
+Here is the updated HTML code for the "Taconomics" website. It now features a sophisticated dark blue theme with high contrast, removes the "Buy Your Book Today" box as requested, and includes the author's full academic credentials.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +10,22 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --color-light: #e0ead3;
-            --color-light-med: #b5c89e;
-            --color-med: #90a872;
-            --color-dark-med: #698a41;
-            --color-dark: #365a0a;
-            --color-copper: #b87333;
-            --color-dark-blue: #003366;
-            --color-text: #333333;
+            --color-bg-deep: #0a1428;
+            --color-bg-dark: #0f1e38;
+            --color-bg-card: #142a4c;
+            --color-bg-card-hover: #1a3360;
+            --color-border: #1e3f6e;
+            --color-accent: #4a9eff;
+            --color-accent-light: #7bb8ff;
+            --color-copper: #d4944c;
+            --color-copper-light: #e8b06e;
+            --color-text-primary: #e8eef7;
+            --color-text-secondary: #a8bcd8;
+            --color-text-muted: #6b829e;
+            --color-taco-red: #ff6b6b;
+            --color-taco-blue: #4a9eff;
+            --color-equilibrium: #4ade80;
             --color-white: #ffffff;
-            --color-taco-red: #e53935;
-            --color-taco-blue: #1e88e5;
-            --color-equilibrium: #4caf50;
         }
         
         * {
@@ -30,8 +36,8 @@
         }
         
         body {
-            background-color: var(--color-light);
-            color: var(--color-text);
+            background-color: var(--color-bg-deep);
+            color: var(--color-text-primary);
             line-height: 1.6;
         }
         
@@ -43,39 +49,54 @@
         
         /* ── Coming‑soon banner ── */
         .coming-banner {
-            background: linear-gradient(135deg, #b87333, #d4a373);
-            color: #fff;
+            background: linear-gradient(135deg, #0f1e38, #1a3360);
+            color: var(--color-white);
             text-align: center;
-            padding: 14px 20px;
+            padding: 16px 20px;
             font-weight: 600;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             letter-spacing: 0.5px;
-            border-bottom: 3px solid var(--color-dark-blue);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--color-copper);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
         .coming-banner i {
-            font-size: 1.8rem;
-            color: #fff6e6;
+            font-size: 1.9rem;
+            color: var(--color-copper-light);
         }
         .coming-banner span {
-            background: rgba(0,0,0,0.15);
-            padding: 6px 18px;
+            background: rgba(74, 158, 255, 0.15);
+            padding: 8px 22px;
             border-radius: 40px;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            border: 1px solid rgba(74, 158, 255, 0.3);
+            color: var(--color-accent-light);
         }
         
         /* Header Styles */
         header {
-            background: linear-gradient(to right, var(--color-dark), var(--color-dark-med));
+            background: linear-gradient(135deg, #0f1e38 0%, #1a3360 100%);
             color: white;
-            padding: 30px 0;
-            border-bottom: 5px solid var(--color-copper);
+            padding: 40px 0;
+            border-bottom: 3px solid var(--color-copper);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(74, 158, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
         }
         
         .header-content {
@@ -83,6 +104,8 @@
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
+            position: relative;
+            z-index: 1;
         }
         
         .book-cover {
@@ -93,8 +116,8 @@
         .book-cover img {
             width: 100%;
             border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            border: 5px solid var(--color-copper);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(212, 148, 76, 0.3);
+            border: 4px solid var(--color-copper);
         }
         
         .header-text {
@@ -106,25 +129,32 @@
             font-size: 2.8rem;
             margin-bottom: 15px;
             color: var(--color-white);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.2;
         }
         
         .tagline {
             font-size: 1.4rem;
-            color: var(--color-light);
+            color: var(--color-accent-light);
             margin-bottom: 20px;
             font-style: italic;
         }
         
+        .header-description {
+            font-size: 1.15rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+        
         /* Summary Section */
         .summary-section {
-            background-color: var(--color-white);
-            padding: 50px 0;
-            border-bottom: 3px solid var(--color-light-med);
+            background-color: var(--color-bg-dark);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--color-border);
         }
         
         h2 {
-            color: var(--color-dark-blue);
+            color: var(--color-accent);
             font-size: 2.2rem;
             margin-bottom: 25px;
             border-bottom: 3px solid var(--color-copper);
@@ -133,71 +163,134 @@
         }
         
         .summary-content {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.15rem;
+            line-height: 1.9;
             margin-bottom: 30px;
+            color: var(--color-text-secondary);
         }
         
-        /* Author & Purchase Section */
-        .author-purchase {
-            background-color: var(--color-light-med);
-            padding: 40px 0;
+        .summary-content p {
+            margin-bottom: 15px;
+        }
+        
+        /* Author Section */
+        .author-section {
+            background-color: var(--color-bg-deep);
+            padding: 60px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .author-card {
+            background: var(--color-bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid var(--color-border);
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
+            align-items: flex-start;
         }
         
-        .author-info, .purchase-info {
+        .author-info {
             flex: 1;
             min-width: 300px;
-            background-color: var(--color-white);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .author-info h3, .purchase-info h3 {
-            color: var(--color-dark-blue);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
         }
         
         .author-name {
-            color: var(--color-copper);
+            color: var(--color-copper-light);
             font-weight: bold;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
         }
         
-        .contact-btn, .buy-btn {
+        .author-title {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .author-bio {
+            color: var(--color-text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .credentials-box {
+            background: rgba(74, 158, 255, 0.08);
+            border: 1px solid rgba(74, 158, 255, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        
+        .credentials-box h4 {
+            color: var(--color-accent-light);
+            margin-bottom: 15px;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .credentials-box h4 i {
+            color: var(--color-copper);
+        }
+        
+        .credentials-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .credentials-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(74, 158, 255, 0.1);
+            color: var(--color-text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.98rem;
+        }
+        
+        .credentials-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .credentials-list li i {
+            color: var(--color-copper);
+            margin-top: 4px;
+            font-size: 0.9rem;
+            min-width: 16px;
+        }
+        
+        .contact-btn {
             display: inline-block;
-            background-color: var(--color-copper);
+            background: linear-gradient(135deg, var(--color-copper), #b87333);
             color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 14px 30px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 15px;
+            margin-top: 20px;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(212, 148, 76, 0.3);
         }
         
-        .contact-btn:hover, .buy-btn:hover {
-            background-color: var(--color-dark-blue);
+        .contact-btn:hover {
+            background: linear-gradient(135deg, #e8b06e, var(--color-copper));
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(212, 148, 76, 0.4);
         }
         
-        .buy-btn {
-            background-color: var(--color-dark);
-        }
-        
-        /* Interactive Section (new Taconomics style) */
+        /* Interactive Section */
         .interactive-section {
             padding: 60px 0;
-            background-color: var(--color-white);
+            background-color: var(--color-bg-dark);
         }
         
         .section-header {
@@ -205,112 +298,66 @@
             margin-bottom: 40px;
         }
         
+        .section-header h2 {
+            display: inline-block;
+        }
+        
+        .section-header p {
+            color: var(--color-text-secondary);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        
         .interactive-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 30px;
             margin-bottom: 50px;
         }
         
         .controls-panel {
             flex: 1.2;
             min-width: 300px;
-            background-color: var(--color-light);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background-color: var(--color-bg-card);
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid var(--color-border);
             max-height: 85vh;
             overflow-y: auto;
+        }
+        
+        .controls-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .controls-panel::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+        }
+        
+        .controls-panel::-webkit-scrollbar-thumb {
+            background: var(--color-border);
+            border-radius: 3px;
         }
         
         .graph-container {
             flex: 1.5;
             min-width: 300px;
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background-color: var(--color-bg-card);
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid var(--color-border);
             display: flex;
             flex-direction: column;
         }
         
-        .slider-container {
-            margin-bottom: 30px;
-        }
-        
-        .slider-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        
-        .slider-description {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 5px;
+        .graph-container h3 {
+            color: var(--color-accent-light);
             margin-bottom: 15px;
         }
         
-        .slider {
-            width: 100%;
-            height: 10px;
-            border-radius: 5px;
-            background: var(--color-light-med);
-            outline: none;
-            -webkit-appearance: none;
-        }
-        
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--color-copper);
-            cursor: pointer;
-            border: 2px solid var(--color-dark-blue);
-        }
-        
-        .economics-principles {
-            margin-top: 30px;
-            background-color: var(--color-white);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--color-dark-med);
-        }
-        
-        .economics-principles h4 {
-            color: var(--color-dark-blue);
-            margin-bottom: 15px;
-        }
-        
-        .principles-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .demand-principles, .supply-principles {
-            padding: 10px;
-            background-color: var(--color-light);
-            border-radius: 5px;
-        }
-        
-        .demand-principles h5, .supply-principles h5 {
-            color: var(--color-dark);
-            margin-bottom: 8px;
-        }
-        
-        .demand-principles ul, .supply-principles ul {
-            padding-left: 20px;
-        }
-        
-        .demand-principles li, .supply-principles li {
-            margin-bottom: 5px;
-        }
-        
-        /* Graph Styles */
         .graph-wrapper {
             flex: 1;
             position: relative;
@@ -319,7 +366,7 @@
         
         .chart-container {
             width: 100%;
-            height: 300px;
+            height: 320px;
             position: relative;
         }
         
@@ -327,7 +374,7 @@
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 10px;
+            margin-top: 12px;
             margin-bottom: 20px;
         }
         
@@ -335,14 +382,16 @@
             font-weight: bold;
             display: flex;
             align-items: center;
+            font-size: 0.95rem;
         }
         
         .demand-label:before, .supply-label:before {
             content: '';
             display: inline-block;
-            width: 20px;
+            width: 22px;
             height: 3px;
             margin-right: 8px;
+            border-radius: 2px;
         }
         
         .demand-label:before {
@@ -354,28 +403,94 @@
         }
         
         .feedback-box {
-            background-color: var(--color-light-med);
-            padding: 20px;
+            background: rgba(74, 158, 255, 0.08);
+            padding: 18px;
             border-radius: 8px;
             margin-top: 20px;
             font-style: italic;
             border-left: 4px solid var(--color-copper);
-        }
-        
-        .equilibrium-explanation {
-            background-color: var(--color-light);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
+            color: var(--color-text-secondary);
             font-size: 0.95rem;
-            border: 1px dashed var(--color-dark-med);
         }
         
-        /* Shock Events (re‑styled as button groups) */
+        .explanation {
+            margin-top: 20px;
+            padding: 18px;
+            background: rgba(74, 158, 255, 0.08);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+        
+        .explanation strong {
+            color: var(--color-accent-light);
+        }
+        
+        /* Scenario buttons */
+        .scenario-btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 7px;
+            padding: 11px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--color-text-secondary);
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+        
+        .scenario-btn:hover {
+            background: rgba(74, 158, 255, 0.12);
+            border-color: var(--color-accent);
+            color: var(--color-text-primary);
+            transform: translateX(3px);
+        }
+        
+        .btn-group {
+            margin-bottom: 22px;
+            border-bottom: 1px solid rgba(74, 158, 255, 0.15);
+            padding-bottom: 18px;
+        }
+        
+        .btn-group p {
+            font-weight: bold;
+            color: var(--color-accent-light);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .reset-btn {
+            background: linear-gradient(135deg, #e53935, #c62828);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 5px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
+        }
+        
+        .reset-btn:hover {
+            background: linear-gradient(135deg, #ff5252, #e53935);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 57, 53, 0.4);
+        }
+        
+        /* Shock Events */
         .shock-events {
-            background-color: var(--color-light);
-            padding: 40px 0;
+            background-color: var(--color-bg-deep);
+            padding: 60px 0;
             text-align: center;
+            border-top: 1px solid var(--color-border);
         }
         
         .shock-buttons {
@@ -387,29 +502,35 @@
         }
         
         .shock-btn {
-            background-color: var(--color-med);
-            color: white;
-            border: none;
-            padding: 15px 20px;
+            background: var(--color-bg-card);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+            padding: 16px 24px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-size: 1rem;
         }
         
+        .shock-btn i {
+            color: var(--color-copper);
+        }
+        
         .shock-btn:hover {
-            background-color: var(--color-dark-med);
-            transform: translateY(-5px);
+            background: var(--color-bg-card-hover);
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(74, 158, 255, 0.2);
         }
         
         .shock-explanation {
-            background-color: var(--color-white);
-            padding: 20px;
-            border-radius: 8px;
+            background: var(--color-bg-card);
+            padding: 25px;
+            border-radius: 10px;
             margin-top: 20px;
             max-width: 800px;
             margin-left: auto;
@@ -417,21 +538,31 @@
             display: none;
             text-align: left;
             border-left: 5px solid var(--color-copper);
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+            border-left-width: 5px;
+        }
+        
+        .shock-explanation h4 {
+            color: var(--color-accent-light);
+            margin-bottom: 10px;
         }
         
         /* Game Section */
         .game-section {
             padding: 60px 0;
-            background-color: var(--color-white);
+            background-color: var(--color-bg-dark);
         }
         
         .game-prompt {
-            background-color: var(--color-dark-blue);
+            background: linear-gradient(135deg, #0f1e38, #1a3360);
             color: white;
-            padding: 25px;
-            border-radius: 10px;
+            padding: 28px;
+            border-radius: 12px;
             margin-bottom: 30px;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
         
         .game-options {
@@ -442,33 +573,59 @@
         }
         
         .game-option {
-            background-color: var(--color-light);
-            padding: 20px;
-            border-radius: 8px;
+            background: var(--color-bg-card);
+            padding: 25px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid var(--color-border);
+        }
+        
+        .game-option h4 {
+            color: var(--color-accent-light);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .game-option p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
         }
         
         .game-option:hover {
-            background-color: var(--color-light-med);
+            background: var(--color-bg-card-hover);
             border-color: var(--color-copper);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
         
         .game-reveal {
-            background-color: var(--color-light);
-            padding: 25px;
+            background: var(--color-bg-card);
+            padding: 28px;
             border-radius: 10px;
             margin-top: 30px;
             display: none;
+            border: 1px solid var(--color-border);
+            border-left: 5px solid var(--color-equilibrium);
+        }
+        
+        .game-reveal h3 {
+            color: var(--color-equilibrium);
+            margin-bottom: 12px;
+        }
+        
+        .game-reveal p {
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--color-dark);
-            color: white;
-            padding: 30px 0;
+            background: #060e1c;
+            color: var(--color-text-muted);
+            padding: 40px 0;
             text-align: center;
+            border-top: 1px solid var(--color-border);
         }
         
         .footer-content {
@@ -476,24 +633,18 @@
             margin: 0 auto;
         }
         
-        /* small reset button for graph */
-        .reset-btn {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 8px;
-            font-size: 1rem;
-            transition: 0.2s;
-        }
-        .reset-btn:hover {
-            background-color: #d32f2f;
+        .footer-content h3 {
+            color: var(--color-copper-light);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
         
+        .footer-content p {
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -507,19 +658,33 @@
             }
             
             h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .tagline {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
-            .principles-grid {
-                grid-template-columns: 1fr;
+            .author-card {
+                padding: 25px;
             }
+            
             .coming-banner {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 padding: 12px 10px;
+            }
+            
+            .coming-banner span {
+                font-size: 1rem;
+                padding: 6px 16px;
+            }
+            
+            .coming-banner i {
+                font-size: 1.4rem;
+            }
+            
+            .chart-container {
+                height: 260px;
             }
         }
     </style>
@@ -536,12 +701,12 @@
     <header>
         <div class="container header-content">
             <div class="book-cover">
-                <img src="taconomicscover.jpg" alt="Taconomics: Economics Through a Taco Stand" onerror="this.onerror=null; this.src='https://placehold.co/250x350/003366/b87333?text=Taconomics&font=montserrat'">
+                <img src="taconomicscover.jpg" alt="Taconomics: Economics Through a Taco Stand" onerror="this.onerror=null; this.src='https://placehold.co/250x350/0f1e38/d4944c?text=Taconomics&font=montserrat'">
             </div>
             <div class="header-text">
                 <h1>Taconomics: Economics Through a Taco Stand</h1>
                 <p class="tagline">Learn Microeconomics One Taco at a Time</p>
-                <p style="font-size: 1.2rem;">A deliciously simple introduction to economics where every concept is explained through the familiar lens of running a taco business. Perfect for students, curious minds, and anyone who's ever wondered how the economy really works.</p>
+                <p class="header-description">A deliciously simple introduction to economics where every concept is explained through the familiar lens of running a taco business. Perfect for students, curious minds, and anyone who's ever wondered how the economy really works.</p>
             </div>
         </div>
     </header>
@@ -558,33 +723,43 @@
         </div>
     </section>
 
-    <!-- Author & Purchase Section -->
-    <section class="author-purchase">
-        <div class="container" style="display: flex; flex-wrap: wrap; gap: 40px;">
-            <div class="author-info">
-                <h3>About the Author</h3>
-                <p class="author-name">Sergio Nieto</p>
-                <p>Sergio Nieto is an economics educator with over 15 years of experience teaching microeconomics at the university level. Frustrated with how economics is traditionally taught, he developed a unique approach that uses everyday scenarios to explain complex concepts.</p>
-                <p>His "Taco Stand Economics" method has been featured in educational conferences and has helped thousands of students grasp economic fundamentals. Sergio is available for speaking engagements, conferences, and workshops on Economics and Economic History.</p>
-                <a href="mailto:sergio@tacostandeconomics.com" class="contact-btn">Contact for Conferences</a>
-            </div>
-            
-            <div class="purchase-info">
-                <h3>Get Your Copy Today</h3>
-                <p>Available in paperback, hardcover, and ebook formats. Perfect for:</p>
-                <ul style="margin: 15px 0 15px 20px;">
-                    <li>Economics students seeking a clearer understanding</li>
-                    <li>Teachers looking for engaging teaching materials</li>
-                    <li>Small business owners wanting to understand market dynamics</li>
-                    <li>Anyone curious about how the economy works</li>
-                </ul>
-                <p>Use the interactive tools below to experience the "Taco Stand Economics" approach before you buy!</p>
-                <a href="https://www.amazon.com/Economics-Explained-Through-Taco-Stand/dp/XXXXXX" target="_blank" class="buy-btn">Buy on Amazon</a>
+    <!-- Author Section (full width, no purchase box) -->
+    <section class="author-section">
+        <div class="container">
+            <div class="author-card">
+                <div class="author-info">
+                    <p class="author-name">Sergio Nieto</p>
+                    <p class="author-title">Economist · Educator · Author</p>
+                    <div class="author-bio">
+                        <p>Sergio Nieto is an economics educator with over 15 years of experience teaching microeconomics at the university level. Frustrated with how economics is traditionally taught, he developed a unique approach that uses everyday scenarios to explain complex concepts.</p>
+                        <p style="margin-top: 12px;">His "Taco Stand Economics" method has been featured in educational conferences and has helped thousands of students grasp economic fundamentals. Sergio is available for speaking engagements, conferences, and workshops on Economics and Economic History.</p>
+                    </div>
+                    
+                    <div class="credentials-box">
+                        <h4><i class="fas fa-graduation-cap"></i> Academic Credentials</h4>
+                        <ul class="credentials-list">
+                            <li>
+                                <i class="fas fa-certificate"></i>
+                                <span><strong>PhD in Economics</strong> — Universidad de Baja California, Mexico (2021)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-certificate"></i>
+                                <span><strong>The Power MBA Business Expert – Administration</strong> — Administration and Management, Spain (2021)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-certificate"></i>
+                                <span><strong>BS in Economics</strong> — Brigham Young University Idaho, 2005 (Minor in International Studies)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a href="mailto:sergio@tacostandeconomics.com" class="contact-btn">Contact for Conferences</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== INTERACTIVE TACO ECONOMICS (adapted from the better code) ========== -->
+    <!-- ========== INTERACTIVE TACO ECONOMICS ========== -->
     <section class="interactive-section">
         <div class="container">
             <div class="section-header">
@@ -595,45 +770,45 @@
             <div class="interactive-container">
                 <!-- LEFT: control panel with scenario buttons -->
                 <div class="controls-panel">
-                    <h3 style="color: #003366; margin-bottom: 20px;">Market Scenarios</h3>
+                    <h3 style="color: var(--color-accent-light); margin-bottom: 20px;">Market Scenarios</h3>
                     
-                    <!-- Supply Shifters (taco style) -->
-                    <div class="btn-group" style="margin-bottom: 20px; border-bottom: 1px solid #b5c89e; padding-bottom: 15px;">
-                        <p style="font-weight: bold; color: #365a0a; margin-bottom: 8px;">📦 Supply Shifters (5 determinants):</p>
-                        <button onclick="applyScenario('tech')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">1. Tech: New taco press (Shift Right)</button>
-                        <button onclick="applyScenario('inputCost')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">2. Inputs: Avocado price jumps (Shift Left)</button>
-                        <button onclick="applyScenario('subsidy')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">3. Government: Taco subsidy (Shift Right)</button>
-                        <button onclick="applyScenario('futurePriceSupply')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">4. Expectations: Future price rise (Shift Left)</button>
-                        <button onclick="applyScenario('numSellers')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">5. Number of Sellers: New taco trucks (Shift Right)</button>
+                    <!-- Supply Shifters -->
+                    <div class="btn-group">
+                        <p>📦 Supply Shifters (5 determinants):</p>
+                        <button onclick="applyScenario('tech')" class="scenario-btn">1. Tech: New taco press (Shift Right)</button>
+                        <button onclick="applyScenario('inputCost')" class="scenario-btn">2. Inputs: Avocado price jumps (Shift Left)</button>
+                        <button onclick="applyScenario('subsidy')" class="scenario-btn">3. Government: Taco subsidy (Shift Right)</button>
+                        <button onclick="applyScenario('futurePriceSupply')" class="scenario-btn">4. Expectations: Future price rise (Shift Left)</button>
+                        <button onclick="applyScenario('numSellers')" class="scenario-btn">5. Number of Sellers: New taco trucks (Shift Right)</button>
                     </div>
 
-                    <!-- Demand Shifters (taco style) -->
-                    <div class="btn-group" style="margin-bottom: 20px; border-bottom: 1px solid #b5c89e; padding-bottom: 15px;">
-                        <p style="font-weight: bold; color: #365a0a; margin-bottom: 8px;">🛒 Demand Shifters (5 determinants):</p>
-                        <button onclick="applyScenario('taste')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">1. Tastes: Tacos become trendy (Shift Right)</button>
-                        <button onclick="applyScenario('income')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">2. Income: Buyers earn more (Shift Right)</button>
-                        <button onclick="applyScenario('substitute')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">3. Related Goods: Burrito price rises (Shift Right)</button>
-                        <button onclick="applyScenario('futurePriceDemand')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">4. Expectations: Taco Tuesday discount ahead (Shift Left)</button>
-                        <button onclick="applyScenario('numBuyers')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">5. Number of Buyers: Office opens next door (Shift Right)</button>
+                    <!-- Demand Shifters -->
+                    <div class="btn-group">
+                        <p>🛒 Demand Shifters (5 determinants):</p>
+                        <button onclick="applyScenario('taste')" class="scenario-btn">1. Tastes: Tacos become trendy (Shift Right)</button>
+                        <button onclick="applyScenario('income')" class="scenario-btn">2. Income: Buyers earn more (Shift Right)</button>
+                        <button onclick="applyScenario('substitute')" class="scenario-btn">3. Related Goods: Burrito price rises (Shift Right)</button>
+                        <button onclick="applyScenario('futurePriceDemand')" class="scenario-btn">4. Expectations: Taco Tuesday discount ahead (Shift Left)</button>
+                        <button onclick="applyScenario('numBuyers')" class="scenario-btn">5. Number of Buyers: Office opens next door (Shift Right)</button>
                     </div>
 
                     <!-- Price Movements -->
-                    <div class="btn-group" style="margin-bottom: 15px;">
-                        <p style="font-weight: bold; color: #365a0a; margin-bottom: 8px;">💲 Movements Along Curves (Price Changes):</p>
-                        <button onclick="applyScenario('priceIncrease')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">⬆️ Price increases to $40 (Surplus)</button>
-                        <button onclick="applyScenario('priceDecrease')" class="scenario-btn" style="display:block; width:100%; margin-bottom:6px; padding:10px; border-radius:5px; border:1px solid #b87333; background:#fff; text-align:left; cursor:pointer;">⬇️ Price decreases to $20 (Shortage)</button>
+                    <div class="btn-group">
+                        <p>💲 Movements Along Curves (Price Changes):</p>
+                        <button onclick="applyScenario('priceIncrease')" class="scenario-btn">⬆️ Price increases to $40 (Surplus)</button>
+                        <button onclick="applyScenario('priceDecrease')" class="scenario-btn">⬇️ Price decreases to $20 (Shortage)</button>
                     </div>
 
                     <button class="reset-btn" onclick="resetGraph()">🔄 Reset chart to initial taco equilibrium</button>
 
-                    <div class="explanation" id="scenario-explanation" style="margin-top: 20px; padding: 15px; background: #e8f0fe; border-left: 4px solid #1a73e8; border-radius: 4px; font-size: 0.95rem;">
+                    <div class="explanation" id="scenario-explanation">
                         <strong>🌮 Current scenario:</strong> Initial taco equilibrium at Price = $30, Quantity = 30. Click a button to see the market shift!
                     </div>
                 </div>
 
                 <!-- RIGHT: Chart -->
                 <div class="graph-container">
-                    <h3 style="color: #003366; margin-bottom: 10px;">Supply & Demand (Tacos)</h3>
+                    <h3>Supply &amp; Demand (Tacos)</h3>
                     <div class="graph-wrapper">
                         <div class="chart-container">
                             <canvas id="marketChart"></canvas>
@@ -643,7 +818,7 @@
                             <div class="supply-label">Supply (Taco makers)</div>
                         </div>
                     </div>
-                    <div class="feedback-box" id="graph-feedback" style="margin-top: 15px;">
+                    <div class="feedback-box" id="graph-feedback">
                         <p>💬 Adjust scenarios to see how the taco market reacts.</p>
                     </div>
                 </div>
@@ -651,7 +826,7 @@
         </div>
     </section>
 
-    <!-- Shock Events Section (taco version, using the same event buttons but styled as taco shocks) -->
+    <!-- Shock Events Section -->
     <section class="shock-events">
         <div class="container">
             <div class="section-header">
@@ -711,13 +886,17 @@
             <h3>Taconomics: Economics Through a Taco Stand</h3>
             <p>© 2027 Sergio Nieto. All rights reserved.</p>
             <p>This website accompanies the book "Taconomics: Economics Through a Taco Stand" — coming 2027.</p>
-            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--color-light-med);">For educational purposes only. Taco illustrations and concepts are proprietary.</p>
+            <p style="margin-top: 20px; font-size: 0.85rem; color: var(--color-text-muted);">For educational purposes only. Taco illustrations and concepts are proprietary.</p>
         </div>
     </footer>
 
     <script>
-        // ==================== CHART SETUP (taco version) ====================
+        // ==================== CHART SETUP (taco version, dark theme) ====================
         const ctx = document.getElementById('marketChart').getContext('2d');
+        
+        // Set global defaults for Chart.js to match dark theme
+        Chart.defaults.color = '#a8bcd8';
+        Chart.defaults.borderColor = 'rgba(74, 158, 255, 0.1)';
         
         const chart = new Chart(ctx, {
             type: 'line',
@@ -726,31 +905,41 @@
                     {
                         label: 'Demand (Taco lovers)',
                         data: [{x: 50, y: 10}, {x: 40, y: 20}, {x: 30, y: 30}, {x: 20, y: 40}, {x: 10, y: 50}],
-                        borderColor: '#e53935',
-                        backgroundColor: 'rgba(229, 57, 53, 0.1)',
+                        borderColor: '#ff6b6b',
+                        backgroundColor: 'rgba(255, 107, 107, 0.08)',
                         borderWidth: 3,
                         fill: false,
-                        tension: 0.1
+                        tension: 0.1,
+                        pointBackgroundColor: '#ff6b6b',
+                        pointBorderColor: '#0a1428',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
                     },
                     {
                         label: 'Supply (Taco makers)',
                         data: [{x: 10, y: 10}, {x: 20, y: 20}, {x: 30, y: 30}, {x: 40, y: 40}, {x: 50, y: 50}],
-                        borderColor: '#1e88e5',
-                        backgroundColor: 'rgba(30, 136, 229, 0.1)',
+                        borderColor: '#4a9eff',
+                        backgroundColor: 'rgba(74, 158, 255, 0.08)',
                         borderWidth: 3,
                         fill: false,
-                        tension: 0.1
+                        tension: 0.1,
+                        pointBackgroundColor: '#4a9eff',
+                        pointBorderColor: '#0a1428',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
                     },
                     {
                         label: 'Equilibrium / Market point',
                         data: [{x: 30, y: 30}],
-                        borderColor: '#4caf50',
-                        backgroundColor: '#4caf50',
-                        pointRadius: 8,
-                        pointHoverRadius: 10,
+                        borderColor: '#4ade80',
+                        backgroundColor: '#4ade80',
+                        pointRadius: 9,
+                        pointHoverRadius: 11,
                         showLine: false,
-                        pointBorderColor: '#ffffff',
-                        pointBorderWidth: 2
+                        pointBorderColor: '#0a1428',
+                        pointBorderWidth: 3
                     }
                 ]
             },
@@ -759,28 +948,50 @@
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
-                    tooltip: { mode: 'index', intersect: false }
+                    tooltip: { 
+                        mode: 'index', 
+                        intersect: false,
+                        backgroundColor: '#142a4c',
+                        titleColor: '#e8eef7',
+                        bodyColor: '#a8bcd8',
+                        borderColor: '#1e3f6e',
+                        borderWidth: 1,
+                        padding: 12,
+                        cornerRadius: 8
+                    }
                 },
                 scales: {
                     x: {
                         type: 'linear',
                         position: 'bottom',
-                        title: { display: true, text: 'Quantity (Tacos per day)', font: { size: 14, weight: 'bold' } },
+                        title: { 
+                            display: true, 
+                            text: 'Quantity (Tacos per day)', 
+                            font: { size: 13, weight: 'bold' },
+                            color: '#a8bcd8'
+                        },
                         min: 0,
                         max: 70,
-                        grid: { color: 'rgba(0,0,0,0.05)' }
+                        grid: { color: 'rgba(74, 158, 255, 0.07)' },
+                        ticks: { color: '#6b829e' }
                     },
                     y: {
-                        title: { display: true, text: 'Price ($ per taco)', font: { size: 14, weight: 'bold' } },
+                        title: { 
+                            display: true, 
+                            text: 'Price ($ per taco)', 
+                            font: { size: 13, weight: 'bold' },
+                            color: '#a8bcd8'
+                        },
                         min: 0,
                         max: 60,
-                        grid: { color: 'rgba(0,0,0,0.05)' }
+                        grid: { color: 'rgba(74, 158, 255, 0.07)' },
+                        ticks: { color: '#6b829e' }
                     }
                 }
             }
         });
 
-        // ---- helper functions (identical logic as in the 'better code' but adapted) ----
+        // ---- helper functions ----
         function applyScenario(scenario) {
             const exp = document.getElementById('scenario-explanation');
             const feedbackEl = document.getElementById('graph-feedback');
@@ -911,7 +1122,7 @@
             chart.update();
         }
 
-        // ==================== SHOCK EVENTS (taco version) ====================
+        // ==================== SHOCK EVENTS ====================
         const shockButtons = document.querySelectorAll('.shock-btn');
         const shockExplanation = document.getElementById('shock-explanation');
 
@@ -968,11 +1179,7 @@
                 gameReveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
         });
-
-        // initialise the explanation text on load (the graph already shows default)
-        window.addEventListener('DOMContentLoaded', function() {
-            // nothing else needed, chart is already created
-        });
     </script>
 </body>
 </html>
+```
